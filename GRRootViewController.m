@@ -68,7 +68,7 @@ static NSString * const Reference = @"reference";
         Command.font = [UIFont boldSystemFontOfSize:17];
         
         // set label color to white
-        Command.textColor = [UIColor whiteColor];
+        Command.textColor = [UIColor grayColor];
         [scrollView addSubview:Command];
         
         // Track the top of each label as you iterate through the git commands and add to it each time you want to move further down in the scrollView
@@ -81,7 +81,6 @@ static NSString * const Reference = @"reference";
         UILabel *Reference = [[UILabel alloc] initWithFrame:CGRectMake(margin, top, widthMinusMargin, heightForReference)];
         Reference.text = reference;
         Reference.numberOfLines = 0;
-        Reference.backgroundColor = [UIColor grayColor];
         Reference.font = [UIFont systemFontOfSize:15];
         
         // set label color to white
