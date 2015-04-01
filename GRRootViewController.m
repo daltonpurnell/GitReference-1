@@ -24,16 +24,6 @@ static NSString * const Reference = @"reference";
 
 @implementation GRRootViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization (copied this from solution code, but I'm not exactly sure what it does)
-    }
-    return self;
-}
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -45,11 +35,16 @@ static NSString * const Reference = @"reference";
     
     // Add a scrollView to the main view
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20)];
+    // change background color
+    scrollView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:scrollView];
     
     // Add a title ("GitReference") to the scrollView
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(margin, topMargin, widthMinusMargin, heightForLabel)];
     title.text = @"GitReference";
+    
+    // set text color to white
+    title.textColor = [UIColor whiteColor];
     [scrollView addSubview:title];
     
     // Make the font bold size 20
@@ -71,6 +66,9 @@ static NSString * const Reference = @"reference";
         UILabel *Command = [[UILabel alloc] initWithFrame:CGRectMake(margin, top, widthMinusMargin, heightForLabel)];
         Command.text = command;
         Command.font = [UIFont boldSystemFontOfSize:17];
+        
+        // set label color to white
+        Command.textColor = [UIColor whiteColor];
         [scrollView addSubview:Command];
         
         // Track the top of each label as you iterate through the git commands and add to it each time you want to move further down in the scrollView
@@ -83,7 +81,11 @@ static NSString * const Reference = @"reference";
         UILabel *Reference = [[UILabel alloc] initWithFrame:CGRectMake(margin, top, widthMinusMargin, heightForReference)];
         Reference.text = reference;
         Reference.numberOfLines = 0;
+        Reference.backgroundColor = [UIColor grayColor];
         Reference.font = [UIFont systemFontOfSize:15];
+        
+        // set label color to white
+        Reference.textColor = [UIColor whiteColor];
         [scrollView addSubview:Reference];
         
         // Track the top of each label as you iterate through the git commands and add to it each time you want to move further down in the scrollView
