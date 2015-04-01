@@ -36,7 +36,7 @@ static NSString * const Reference = @"reference";
     // Add a scrollView to the main view
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20)];
     // change background color
-    scrollView.backgroundColor = [UIColor whiteColor];
+    scrollView.backgroundColor = [UIColor grayColor];
     [self.view addSubview:scrollView];
     
     // Add a title ("GitReference") to the scrollView
@@ -68,7 +68,7 @@ static NSString * const Reference = @"reference";
         Command.font = [UIFont boldSystemFontOfSize:17];
         
         // set label color to white
-        Command.textColor = [UIColor grayColor];
+        Command.textColor = [UIColor whiteColor];
         [scrollView addSubview:Command];
         
         // Track the top of each label as you iterate through the git commands and add to it each time you want to move further down in the scrollView
