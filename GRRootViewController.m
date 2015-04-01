@@ -13,6 +13,8 @@ static CGFloat margin = 15;
 
 // set the height of the labels to 20
 static CGFloat heightForLabel = 20;
+
+
 static NSString * const Command = @"command";
 static NSString * const Reference = @"reference";
 
@@ -22,6 +24,16 @@ static NSString * const Reference = @"reference";
 
 @implementation GRRootViewController
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization (copied this from solution code, but I'm not exactly sure what it does)
+    }
+    return self;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -29,7 +41,7 @@ static NSString * const Reference = @"reference";
     CGFloat topMargin = 20;
     
     // Give some space between the side edges of the scrollView and the sides of the View
-    CGFloat widthMinusMargin = self.view.frame.size.width - 2 *margin;
+    CGFloat widthMinusMargin = self.view.frame.size.width - 2 * margin;
     
     // Add a scrollView to the main view
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20)];
@@ -45,7 +57,7 @@ static NSString * const Reference = @"reference";
     
     
     // Set the top of the scrollView to equal the global margin + the label height + the top margin, and then multiply it by 2
-    CGFloat top = margin + heightForLabel + topMargin *2;
+    CGFloat top = topMargin + heightForLabel + margin * 2;
     
     // Add a for loop to iterate through the dictionaries in the gitCommands method provided
     for (NSDictionary *gitCommand in [self gitCommands])
@@ -56,29 +68,29 @@ static NSString * const Reference = @"reference";
         
         
         // Create a command label and add it to the view
-        UILabel *gitCommand = [[UILabel alloc] initWithFrame:CGRectMake(margin, topMargin, widthMinusMargin, heightForLabel)];
-        gitCommand.text = command;
-        gitCommand.font = [UIFont boldSystemFontOfSize:17];
-        [scrollView addSubview:gitCommand];
+        UILabel *Command = [[UILabel alloc] initWithFrame:CGRectMake(margin, topMargin, widthMinusMargin, heightForLabel)];
+        Command.text = command;
+        Command.font = [UIFont boldSystemFontOfSize:17];
+        [scrollView addSubview:Command];
         
         // Track the top of each label as you iterate through the git commands and add to it each time you want to move further down in the scrollView
-        top += heightForLabel + margin;
+        top += (heightForLabel + margin);
         
-        
-        CGFloat heightForReference = [self.heightOfReferenceString:reference];
+        CGFloat heightForReference = [self heightOfReferenceString:reference];
         
         
         // Create a reference label and add it to the view just below the command
-        UILabel *gitReference = [[UILabel alloc] initWithFrame:CGRectMake(margin, topMargin, widthMinusMargin, heightForLabel)];
-        gitReference.text = reference;
-        gitReference.font = [UIFont boldSystemFontOfSize:17];
-        [scrollView addSubview:gitReference];
+        UILabel *Reference = [[UILabel alloc] initWithFrame:CGRectMake(margin, topMargin, widthMinusMargin, heightForReference)];
+        Reference.text = reference;
+        Reference.numberOfLines = 0;
+        Reference.font = [UIFont systemFontOfSize:15];
+        [scrollView addSubview:Reference];
         
         // Track the top of each label as you iterate through the git commands and add to it each time you want to move further down in the scrollView
-        top += heightForReference + margin * 2;
+        top += (heightForReference + margin * 2);
         
         
-        // Make sure to update the scrollView's contentSize to the height of all of the labels combined (including margins)
+        // Update the scrollView's contentSize to the height of all of the labels combined (including margins)
         scrollView.contentSize = CGSizeMake(self.view.frame.size.width, top);
         
     }

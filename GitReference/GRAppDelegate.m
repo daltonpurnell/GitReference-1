@@ -8,6 +8,8 @@
 
 #import "GRAppDelegate.h"
 
+#import "GRRootViewController.h"
+
 @implementation GRAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
