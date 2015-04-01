@@ -68,7 +68,7 @@ static NSString * const Reference = @"reference";
         
         
         // Create a command label and add it to the view
-        UILabel *Command = [[UILabel alloc] initWithFrame:CGRectMake(margin, topMargin, widthMinusMargin, heightForLabel)];
+        UILabel *Command = [[UILabel alloc] initWithFrame:CGRectMake(margin, top, widthMinusMargin, heightForLabel)];
         Command.text = command;
         Command.font = [UIFont boldSystemFontOfSize:17];
         [scrollView addSubview:Command];
@@ -80,7 +80,7 @@ static NSString * const Reference = @"reference";
         
         
         // Create a reference label and add it to the view just below the command
-        UILabel *Reference = [[UILabel alloc] initWithFrame:CGRectMake(margin, topMargin, widthMinusMargin, heightForReference)];
+        UILabel *Reference = [[UILabel alloc] initWithFrame:CGRectMake(margin, top, widthMinusMargin, heightForReference)];
         Reference.text = reference;
         Reference.numberOfLines = 0;
         Reference.font = [UIFont systemFontOfSize:15];
@@ -88,19 +88,12 @@ static NSString * const Reference = @"reference";
         
         // Track the top of each label as you iterate through the git commands and add to it each time you want to move further down in the scrollView
         top += (heightForReference + margin * 2);
-        
-        
-        // Update the scrollView's contentSize to the height of all of the labels combined (including margins)
-        scrollView.contentSize = CGSizeMake(self.view.frame.size.width, top);
-        
     }
     
+    // Update the scrollView's contentSize to the height of all of the labels combined (including margins)
+    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, top);
+    
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
 
 // instance method copied from GitHub
 - (NSArray *)gitCommands {
